@@ -16,4 +16,5 @@ const app = initializeApp(firebaseConfig);
 // Initialize firebase database and get the reference of firebase database object.
 const database = getDatabase(app);
 
+ 
 export default database;

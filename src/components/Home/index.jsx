@@ -11,10 +11,10 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledCard = styled(Card)`
-  padding: 20px;
-  margin: 20px;
+  margin: 10px;
+  padding: 10px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 30px;
 `;
 
 const Circular = styled.div`
@@ -99,14 +99,15 @@ const Home = () => {
       sx={{
         justifyContent: "center",
         height: "100vh",
-        backgroundColor: theme.palette.bg100,
+        // backgroundColor: theme.palette.text100,
       }}
     >
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12}>
         <StyledCard elevation={2} sx={{ backgroundColor: theme.palette.bg300 }}>
           <StyledH1 style={{ color: theme.palette.text100 }}>
             Water Level
           </StyledH1>
+
           <Circular>
             <Wave />
             <Score style={{ color: theme.palette.primary300 }}>

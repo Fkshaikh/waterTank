@@ -39,7 +39,7 @@ const Text2 = styled.div`
   margin-top: 50px;
 `;
 
-const LastFilled = () => {
+const LastFilled = ({ lastChecked }) => {
   const theme = useTheme();
 
   return (
@@ -53,9 +53,9 @@ const LastFilled = () => {
         }}
       >
         <Text2 style={{ color: theme.palette.text200, top: "20px" }}>
-          04:40 PM
+          {lastChecked} 
         </Text2>
-        <Text style={{ color: theme.palette.text100 }}>Last Filled</Text>
+        <Text style={{ color: theme.palette.text100 }}>Last Checked</Text>
       </StyledCard>
     </div>
   );

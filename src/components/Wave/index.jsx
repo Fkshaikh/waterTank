@@ -56,24 +56,25 @@ const Score = styled.div`
   animation: ${scoreAnimation} 2s infinite;
 `;
 
-const Wave = () => {
+const Wave = ({ setLastChecked }) => {
   const [currentLevel, setCurrentLevel] = useState(0);
+
   const [animatedScore, setAnimatedScore] = useState(0);
 
   useEffect(() => {
     const databaseRef = ref(database, "waterLevel");
     const handleData = (snapshot) => {
       const newLevel = snapshot.child("currentLevel").val();
+      const newLastChecked = snapshot.child("lastChecked").val();
       setCurrentLevel(newLevel);
+      setLastChecked(newLastChecked);
     };
-
     onValue(databaseRef, handleData);
-
     // Cleanup
     return () => {
       off(databaseRef, handleData);
     };
-  }, []);
+  }, [setLastChecked]);
 
   useEffect(() => {
     let animationCounter = animatedScore;
@@ -87,7 +88,7 @@ const Wave = () => {
       } else {
         clearInterval(interval);
       }
-    }, 100); // Adjust the speed of the counter here (milliseconds)
+    }, 50);
 
     return () => clearInterval(interval);
   }, [currentLevel, animatedScore]);

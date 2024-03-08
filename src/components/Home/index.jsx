@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid } from "@mui/material";
 import Wave from "../Wave";
 import LastFilled from "../LastFilled";
@@ -17,6 +17,8 @@ import TextLogo from "../TextLogo";
 // `;
 
 const Home = () => {
+  const [lastChecked, setLastChecked] = useState("");
+
   return (
     <Grid
       container
@@ -29,8 +31,8 @@ const Home = () => {
       <Grid item xs={12}>
         <Grid container justifyContent={"space-evenly"}>
           <Grid item xs={6}>
-            <LastFilled />
-            <Wave />
+            <LastFilled lastChecked={lastChecked} />
+            <Wave setLastChecked={setLastChecked} />
           </Grid>
           <Grid item xs={6}>
             <Logo />

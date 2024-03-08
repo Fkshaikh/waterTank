@@ -38,10 +38,25 @@ const Text2 = styled.div`
   font-style: normal;
   margin-top: 50px;
 `;
+// Function to convert 24-hour time format to 12-hour format
+const convertTo12Hour = (time24h) => {
+  const [hours, minutes, seconds] = time24h.split(":");
+  let formattedHours = parseInt(hours, 10);
+  let modifier = "AM";
+  if (formattedHours === 0) {
+    formattedHours = 12;
+  } else if (formattedHours >= 12) {
+    formattedHours = formattedHours === 12 ? 12 : formattedHours - 12;
+    modifier = "PM";
+  }
+  return `${formattedHours}:${minutes}:${seconds} ${modifier}`;
+};
 
 const LastFilled = ({ lastChecked }) => {
   const theme = useTheme();
-
+  const formattedTime = lastChecked
+    ? convertTo12Hour(lastChecked)
+    : "Loading...";
   return (
     <div>
       <StyledCard
@@ -53,7 +68,7 @@ const LastFilled = ({ lastChecked }) => {
         }}
       >
         <Text2 style={{ color: theme.palette.text200, top: "20px" }}>
-          {lastChecked} 
+          {formattedTime}
         </Text2>
         <Text style={{ color: theme.palette.text100 }}>Last Checked</Text>
       </StyledCard>

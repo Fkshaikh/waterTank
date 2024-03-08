@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.app",
-  "appName": "app",
+  "appName": "WaterMan",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
